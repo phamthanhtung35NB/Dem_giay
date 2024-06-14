@@ -1,6 +1,7 @@
 byte led7seg[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90};
 int doc, ngang;
 int t=0;
+String mauDoc,mauNgang;
 #define SCLK 13
 #define RCLK 12
 #define DIO 11
@@ -37,17 +38,23 @@ void control() {
     {
       
         doc= trai; ngang= red;
+        mauDoc="trai";
+        mauNgang="do";
     }
     if(t == trai)
     {
+      mauDoc="xanh";
         doc= green;
     }
     if(t==trai+green)
     {
+      mauDoc="vang";
         doc= yellow;
     }
     if(t==trai+green+yellow)
     {
+      mauDoc="do";
+      mauNgang="trai";
         doc= red; ngang= trai;
     }
 
@@ -57,20 +64,26 @@ void control() {
 
     if(t==trai+green+yellow+trai)
     {
+      mauNgang="trai";
         ngang = green;
     }
     if(t==trai+green+yellow+trai+green)
-    {
+    {mauNgang="vang";
         ngang= yellow;
     }
     if(t==trai+green+yellow+trai+green+yellow)
     {
+      mauNgang="do";
         ngang= red;
     }
     
     Serial.print("doc ");
+    Serial.print(mauDoc);
+    Serial.print(" ");
     Serial.print(doc);
     Serial.print("----ngang ");
+    Serial.print(mauNgang);
+    Serial.print(" ");
     Serial.print(ngang);
     Serial.println("");
     demsoled(doc,ngang);
