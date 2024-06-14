@@ -64,7 +64,7 @@ void control() {
 
     if(t==trai+green+yellow+trai)
     {
-      mauNgang="trai";
+      mauNgang="xanh";
         ngang = green;
     }
     if(t==trai+green+yellow+trai+green)
