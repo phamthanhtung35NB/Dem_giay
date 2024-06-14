@@ -1,27 +1,28 @@
 byte led7seg[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90};
 int doc, ngang;
 int t=0;
-#define SCLK 2
-#define RCLK 1
-#define DIO 0
+#define SCLK 13
+#define RCLK 12
+#define DIO 11
 
 #define chan 3
 /****************************************************************/
-#define sum 46
-#define red 23
-#define green 15
-#define yellow 3
-#define trai 5
+int sum =46;
+int red =23;
+int green =15;
+int yellow= 3;
+int trai =5;
 /***************************************************************/
 
 void setup() {
 pinMode(SCLK,OUTPUT);
 pinMode(RCLK,OUTPUT);
 pinMode(DIO,OUTPUT);
+Serial.begin(9600);
 }
 void loop () {
-    
-    //if (digitalRead(chan)==HIGH){
+    Serial.println("--------------------------------");
+//    if (digitalRead(chan)==HIGH){
     if (1){
         t = 0;
         do {
@@ -34,6 +35,7 @@ void control() {
 
     if(t==0)
     {
+      
         doc= trai; ngang= red;
     }
     if(t == trai)
@@ -65,7 +67,12 @@ void control() {
     {
         ngang= red;
     }
-
+    
+    Serial.print("doc ");
+    Serial.print(doc);
+    Serial.print("----ngang ");
+    Serial.print(ngang);
+    Serial.println("");
     demsoled(doc,ngang);
     delay(1000);
     t = t + 1;
