@@ -21,7 +21,8 @@ pinMode(DIO,OUTPUT);
 }
 void loop () {
     
-    if (digitalRead(chan)==HIGH){
+    //if (digitalRead(chan)==HIGH){
+    if (1){
         t = 0;
         do {
             control();
