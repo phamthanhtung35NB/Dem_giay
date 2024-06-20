@@ -1,5 +1,5 @@
 /*
-  shiftOut ra 1 Module LED 7 đoạn đơn
+shiftOut ra 1 Module LED 7 đoạn đơn
 */
 //chân ST_CP của 74HC595 load
 const int latchPin = 8;
@@ -156,7 +156,10 @@ void control() {
     // demsoled(doc,ngang);
     HienThiLED7doan(doc,2);
     HienThiLED7doan2(ngang,2);
-    delay(1000);
+    if (t<sum){
+      delay(1000);  
+    }
+    
     t = t + 1;
     doc--;
     ngang--;
